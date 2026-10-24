@@ -1,0 +1,7 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+body{@apply bg-ink text-slate-200 font-body;background:radial-gradient(ellipse at 80% 0,#0d2a30 0,#05080d 60%) fixed}
+.glass{@apply bg-navy/60 backdrop-blur-md border border-white/10}
+.field{@apply w-full bg-teal/30 border border-white/10 px-3 py-2.5 outline-none transition focus:border-pink focus:shadow-[0_0_14px_rgba(255,107,138,.35)]}
+.btn{@apply bg-pink text-ink font-semibold tracking-widest text-xs px-6 py-3 transition hover:shadow-[0_0_24px_rgba(255,107,138,.6)]}
+.btn2{@apply border border-cyan/40 text-cyan tracking-widest text-xs px-6 py-3 transition hover:shadow-[0_0_20px_rgba(55,214,224,.4)]}
+:focus-visible{outline:2px solid #37d6e0;outline-offset:2px}

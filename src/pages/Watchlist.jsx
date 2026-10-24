@@ -1,0 +1,3 @@
+import {Link} from 'react-router-dom';import {MOVIES} from '../data';import MovieCard from '../components/MovieCard';import {useStore} from '../App';
+export default function Watchlist(){const {watch}=useStore();const l=MOVIES.filter(m=>watch.includes(m.id));
+return <section><h1 className="font-display text-3xl">Watchlist</h1>{l.length?<div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-5">{l.map(m=><MovieCard key={m.id} m={m}/>)}</div>:<div className="mt-16 text-center"><p className="text-slate-400">Nothing saved yet. Add movies from Discover.</p><Link to="/discover" className="btn inline-block mt-5">BROWSE MOVIES</Link></div>}</section>}
