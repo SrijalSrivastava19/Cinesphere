@@ -31,9 +31,9 @@ export default function Auth({ mode }) {
   e.email = "Only Gmail addresses are allowed (example@gmail.com).";
 }
 
-  if (f.pw.length < 8) {
-    e.pw = "Use at least 8 characters.";
-  }
+  if (f.pw.length < 6) {
+  e.pw = "Use at least 6 characters.";
+}
 
   // Handle input changes
   const ch = (k) => (event) => {
