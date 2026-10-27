@@ -27,9 +27,9 @@ export default function Auth({ mode }) {
     e.name = "Enter your full name.";
   }
 
-  if (!/^\S+@\S+\.\S+$/.test(f.email)) {
-    e.email = "Enter a valid email address.";
-  }
+  if (!/^[a-zA-Z0-9._%+-]+@gmail\.com$/i.test(f.email.trim())) {
+  e.email = "Only Gmail addresses are allowed (example@gmail.com).";
+}
 
   if (f.pw.length < 8) {
     e.pw = "Use at least 8 characters.";

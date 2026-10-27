@@ -48,6 +48,84 @@ app.get("/api/test", (req, res) => {
     message: "CineSphere API is working!"
   });
 });
+console.log("MOVIES TEST ROUTE REGISTERED");
+
+app.get("/api/movies-test", (req, res) => {
+  console.log("MOVIES TEST REQUEST RECEIVED");
+
+  res.json({
+    message: "Movies route is working!"
+  });
+});
+
+app.get("/api/movies", async (req, res) => {
+
+  console.log("MOVIES ROUTE HIT");
+  return res.json({ test: "MOVIES ROUTE WORKS" });
+
+  console.log("ACTUAL MOVIES ROUTE REGISTERED");
+  console.log("MOVIES REQUEST RECEIVED");
+try {
+if (!process.env.TMDB_API_KEY) {
+return res.status(500).json({
+message: "TMDB_API_KEY is missing in backend/.env",
+});
+}
+
+
+const page = Math.max(1, Number.parseInt(req.query.page, 10) || 1);
+
+const params = new URLSearchParams({
+  api_key: process.env.TMDB_API_KEY,
+  language: "en-US",
+  page: String(page),
+});
+
+const response = await fetch(
+  `https://api.themoviedb.org/3/movie/popular?${params}`
+);
+
+if (!response.ok) {
+  console.error("TMDB error status:", response.status);
+  return res.status(502).json({
+    message: "TMDB could not provide movies. Check the API credentials.",
+  });
+}
+
+const data = await response.json();
+
+const movies = data.results.map((movie) => ({
+  id: movie.id,
+  title: movie.title,
+  year: movie.release_date ? movie.release_date.slice(0, 4) : "N/A",
+  rating: movie.vote_average,
+  overview: movie.overview,
+  poster: movie.poster_path
+    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+    : null,
+  genreIds: movie.genre_ids,
+}));
+
+res.json({
+  page: data.page,
+  totalPages: data.total_pages,
+  totalResults: data.total_results,
+  movies,
+});
+
+
+} catch (error) {
+console.error("TMDB fetch error:", error.message);
+
+
+res.status(500).json({
+  message: "Server error while fetching movies",
+});
+
+
+}
+});
+
 app.post("/api/auth/signup", async (req, res) => {
   try {
     const { name, email, password } = req.body;
