@@ -19,10 +19,17 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
+      minlength: 6,
     },
 
     // Each user has their own watchlist of movie IDs
     watchlist: {
+      type: [String],
+      default: [],
+    },
+
+    // Each user has their own favorite movies
+    favorites: {
       type: [String],
       default: [],
     },
