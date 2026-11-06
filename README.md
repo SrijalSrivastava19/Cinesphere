@@ -1,10 +1,12 @@
 # 🎬 CineSphere — Cinema. Community.
 
-**Discover movies. Build your watchlist. Connect with movie lovers.**
+### Discover Movies. Share Reviews. Connect Through Cinema.
 
-CineSphere is a full-stack movie discovery and community platform designed to bring cinema enthusiasts together. It combines movie exploration, personalized watchlists, user profiles, and social interaction in one place.
+CineSphere is a full-stack movie discovery and community platform designed to bring cinema enthusiasts together. It combines movie exploration, personalized watchlists, movie ratings, AI-powered sentiment analysis, and social interactions into one cinematic experience.
 
-The goal is to create more than just a movie browsing website — CineSphere aims to build a community where people can discover, discuss, review, and share their love for cinema.
+More than just a movie discovery application, CineSphere aims to create a space where users can explore movies, share opinions, discuss cinema, and understand the community's perception of films.
+
+**Project Status:** Core Features Implemented | Final Development & Deployment in Progress 🚧
 
 ---
 
@@ -12,228 +14,176 @@ The goal is to create more than just a movie browsing website — CineSphere aim
 
 - [Overview](#-overview)
 - [Key Features](#-key-features)
-- [Tech Stack](#️-tech-stack)
+- [AI-Powered Features](#-ai-powered-features)
+- [Technology Stack](#️-technology-stack)
 - [Project Architecture](#-project-architecture)
-- [Work Completed](#-work-completed)
-- [Development Roadmap](#-development-roadmap)
+- [Development Progress](#-development-progress)
 - [Getting Started](#-getting-started)
 - [Environment Variables](#-environment-variables)
-- [API Overview](#-api-overview)
-- [Future Vision](#-future-vision)
+- [Future Scope](#-future-scope)
 - [Contributors](#-contributors)
 
 ---
 
 ## 🌟 Overview
 
-CineSphere is being developed as a full-stack web application with a modern cinematic interface and a backend that supports user authentication, movie data, and personalized user interactions.
+CineSphere brings together three major aspects of the movie experience:
 
-The platform uses The Movie Database (TMDB) API to retrieve movie information and provide movie posters and details.
+- **Discovery:** Find movies, explore details, and discover cast information.
+- **Community:** Share posts, write reviews, rate movies, and interact with other users.
+- **Intelligence:** Analyze community sentiment and visualize audience reactions through AI-powered insights.
 
-Its interface follows a visual theme inspired by:
-
-- 🌙 Moonlight
-- 🌌 Midnight Sky
-- 🌊 Deep Ocean
-- 🎞️ Cinematic Noir
-
-The application is being developed with scalability, responsiveness, and user experience in mind.
+The platform features a cinematic design inspired by moonlight, midnight skies, deep oceans, and cinematic noir.
 
 ---
 
 ## ✨ Key Features
 
-### 🎥 Movie Discovery
-- Explore movies through a cinematic interface.
-- Retrieve movie information using the TMDB API.
-- Display movie posters and details.
-- Discover trending and popular movie content.
-
-### 🔐 User Authentication
+### 🔐 1. User Authentication
 - User registration and login.
-- Password hashing using bcrypt.
-- JWT-based authentication architecture.
+- JWT-based authentication.
+- Password hashing using bcryptjs.
 - Protected backend routes.
+- MongoDB Atlas integration.
 
-### ❤️ Personal Watchlist
+### 🎥 2. Movie Discovery
+- Movie search and discovery.
+- TMDB API integration.
+- Movie details and cast information.
+- Movie posters and metadata.
+- Explore movie information through a dedicated interface.
+
+### ❤️ 3. Personal Watchlist & Favorites
 - Add movies to a personal watchlist.
-- Retrieve saved movies.
-- User-specific watchlist management.
+- Save favorite movies.
+- User-specific movie collections.
+- Persistent storage through the backend.
 
-### 👥 Community
-- Community feed foundation.
-- Community post and comment data models.
-- Planned movie discussions and user interactions.
+### 👥 4. Community Platform
+- Create community posts.
+- Like and comment on posts.
+- Share movie-related opinions.
+- Community reviews.
+- Spoiler support for movie discussions.
+- Movie ratings on a scale of 1–10.
 
-### 👤 User Profiles
-- Profile page interface.
-- Foundation for personalized user information.
-- Planned user activity and watchlist integration.
+### 🤖 5. AI-Powered Sentiment Analysis
+CineSphere incorporates AI-powered sentiment analysis to understand audience opinions and reactions.
+
+The system classifies community sentiment into three categories:
+
+- 🟢 Positive
+- 🟡 Neutral
+- 🔴 Negative
+
+This helps users understand the overall perception of movies based on community discussions and reviews.
+
+### 📊 6. Community Sentiment Dashboard
+- Visual representation of audience sentiment.
+- Community opinion insights.
+- Sentiment distribution across reviews and discussions.
+
+### 🔥 7. Hype Meter
+A basic Hype Meter provides an overview of community interest and excitement surrounding movies.
+
+**Hype Meter 2.0** is planned to introduce improved tracking and visualization.
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Technology Stack
 
 | Technology | Purpose |
 |---|---|
-| Next.js / React | Frontend development |
-| TypeScript | Type safety |
+| React | Frontend development |
+| JavaScript | Application logic |
 | Tailwind CSS | Styling |
 | Framer Motion | Animations |
 | Lucide React | Icons |
 | Node.js | Backend runtime |
-| Express.js | Backend framework |
-| MongoDB | Database |
+| Express.js | REST API development |
+| MongoDB Atlas | Cloud database |
 | Mongoose | Database modeling |
 | JWT | Authentication |
 | bcryptjs | Password hashing |
-| TMDB API | Movie data and posters |
+| TMDB API | Movie data and metadata |
+| AI / NLP | Sentiment analysis |
 
 ---
 
 ## 🏗️ Project Architecture
 
-The project follows a frontend-backend architecture.
+CineSphere follows a frontend-backend architecture.
 
 ```text
-CineSphere/
-│
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── context/
-│   │   ├── hooks/
-│   │   ├── data/
-│   │   └── styles/
-│   │
-│   ├── public/
-│   └── package.json
-│
-├── backend/
-│   ├── models/
-│   │   ├── User.js
-│   │   ├── CommunityPost.js
-│   │   └── Comment.js
-│   │
-│   ├── routes/
-│   │   ├── auth.js
-│   │   └── watchlist.js
-│   │
-│   ├── middleware/
-│   ├── server.js
-│   └── package.json
-│
-└── README.md
+                 CINESP H E R E
+                       |
+          +------------+------------+
+          |                         |
+      FRONTEND                   BACKEND
+          |                         |
+       React                    Node.js
+          |                         |
+    Tailwind CSS                Express.js
+          |                         |
+   Framer Motion              REST APIs
+          |                         |
+          |                   JWT Authentication
+          |                         |
+          |                    Mongoose
+          |                         |
+          |                    MongoDB Atlas
+          |                         |
+          +------------+------------+
+                       |
+                EXTERNAL SERVICES
+                       |
+                +------+------+
+                |             |
+             TMDB API     AI Sentiment
+                           Analysis
 ```
 
-*Note: This is a logical overview of the project structure. Folder and file names may differ in the current repository.*
-
 ---
 
-## ✅ Work Completed
+## ✅ Development Progress
 
-The following work has been implemented during the development process:
+### Completed Features
 
-### Frontend Development
-- Created the CineSphere cinematic interface.
-- Developed the navigation and main application layout.
-- Implemented Home and Discover interfaces.
-- Developed Community, Watchlist, and Profile pages.
-- Created reusable movie cards and UI components.
-- Added animations using Framer Motion.
-- Established the visual theme and styling system.
+- [x] Cinematic frontend interface.
+- [x] User signup and login.
+- [x] JWT authentication.
+- [x] MongoDB Atlas integration.
+- [x] TMDB API integration.
+- [x] Movie search and discovery.
+- [x] Movie details and cast information.
+- [x] Personalized watchlist.
+- [x] Favorites functionality.
+- [x] Community posts.
+- [x] Likes and comments.
+- [x] Spoiler support.
+- [x] Community reviews.
+- [x] Movie ratings (1–10).
+- [x] AI-powered sentiment analysis.
+- [x] Positive, Neutral and Negative sentiment classification.
+- [x] Community sentiment dashboard.
+- [x] Basic Hype Meter.
+- [x] Node.js and Express backend APIs.
+- [x] React frontend with Tailwind CSS and Framer Motion.
 
-### Backend Development
-- Set up a Node.js and Express.js backend.
-- Established MongoDB connectivity using Mongoose.
-- Created the User model.
-- Implemented user signup functionality.
-- Integrated bcryptjs for password hashing.
-- Implemented and tested user login functionality.
-- Established JWT-based authentication.
-- Created authentication middleware and protected route foundations.
+### 🚧 Currently Under Development
 
-### TMDB Integration
-- Integrated The Movie Database API.
-- Implemented movie data retrieval.
-- Worked on movie poster rendering.
-- Fixed movie poster display issues.
-
-### Watchlist
-- Implemented the GET `/api/watchlist` endpoint.
-- Implemented the POST `/api/watchlist/:movieId` endpoint.
-- Connected watchlist operations with authentication.
-
-### Community Foundation
-- Started the community backend structure.
-- Created community post and comment schema foundations.
-- Established the initial structure for social interactions.
-
----
-
-## 🚧 Development Roadmap
-
-CineSphere is actively under development. The following features represent the remaining development goals.
-
-### Phase 1 — Frontend & User Experience
-- [x] Cinematic UI development
-- [x] Main navigation
-- [x] Movie cards and layouts
-- [x] Core page interfaces
-- [ ] Complete responsive design across devices
-- [ ] Improve loading and error states
-
-### Phase 2 — Authentication & Backend
-- [x] Express backend setup
-- [x] MongoDB integration
-- [x] User registration
-- [x] User login
-- [x] Password hashing
-- [x] JWT authentication foundation
-- [ ] Complete protected frontend routes
-- [ ] Add token refresh and session handling
-- [ ] Improve backend validation and security
-
-### Phase 3 — Movie Discovery
-- [x] TMDB API integration
-- [x] Movie poster integration
-- [ ] Complete movie detail pages
-- [ ] Search movies by title
-- [ ] Genre-based filtering
-- [ ] Trending and popular movie sections
-- [ ] Pagination and optimized API requests
-
-### Phase 4 — Watchlist
-- [x] Watchlist backend endpoints
-- [ ] Complete frontend-backend integration
-- [ ] Remove movies from watchlist
-- [ ] Prevent duplicate entries
-- [ ] Persist and synchronize watchlist data
-
-### Phase 5 — Community & Social Features
-- [x] Community data model foundations
-- [ ] Create and publish posts
-- [ ] Like and comment functionality
-- [ ] Movie reviews and ratings
-- [ ] User-to-user interactions
-- [ ] Community feed integration
-
-### Phase 6 — User Profiles
-- [x] Initial profile interface
-- [ ] Dynamic user profile data
-- [ ] Profile editing
-- [ ] User activity history
-- [ ] Display user reviews and watchlist
-
-### Phase 7 — Testing & Deployment
-- [ ] API testing and validation
-- [ ] Frontend and backend integration testing
-- [ ] Error handling and performance optimization
-- [ ] Production environment configuration
-- [ ] Frontend deployment
-- [ ] Backend deployment
-- [ ] Database production configuration
+- [ ] Hype Meter 2.0.
+- [ ] Dynamic Home Page.
+- [ ] Complete User Profile Dashboard.
+- [ ] Final polish for Reviews and Ratings.
+- [ ] Community feed sorting and improvements.
+- [ ] Mobile responsiveness.
+- [ ] UI/UX and animation improvements.
+- [ ] Production-level security and error handling.
+- [ ] Frontend and backend deployment.
+- [ ] Custom domain integration.
+- [ ] Final testing and bug fixes.
+- [ ] Complete project documentation.
 
 ---
 
@@ -241,11 +191,11 @@ CineSphere is actively under development. The following features represent the r
 
 ### Prerequisites
 
-Make sure you have installed:
+Make sure you have the following installed:
 
 - Node.js
 - npm
-- MongoDB
+- MongoDB Atlas account or MongoDB instance
 - Git
 
 ### 1. Clone the Repository
@@ -258,7 +208,7 @@ cd Cinesphere
 
 ### 2. Install Dependencies
 
-Install frontend dependencies:
+Install the frontend dependencies:
 
 ```bash
 npm install
@@ -273,7 +223,18 @@ npm install
 
 ### 3. Configure Environment Variables
 
-Create a `.env` file inside the backend directory and configure the required credentials.
+Create a `.env` file inside the backend directory.
+
+Add your credentials:
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+TMDB_API_KEY=your_tmdb_api_key
+```
+
+Configure any additional environment variables required by the AI sentiment analysis service.
 
 ### 4. Start the Backend
 
@@ -284,84 +245,67 @@ npm run dev
 
 ### 5. Start the Frontend
 
-Open another terminal in the frontend project directory:
+Open another terminal in the frontend directory:
 
 ```bash
 npm run dev
 ```
 
-The frontend and backend should now be running locally.
+The application should now be available locally.
 
-*Note: Development scripts and frontend directory paths should be checked against the current package.json files.*
-
----
-
-## 🔑 Environment Variables
-
-Backend `.env`:
-
-```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-TMDB_API_KEY=your_tmdb_api_key
-```
-
-Frontend environment variables, if required:
-
-```env
-NEXT_PUBLIC_API_URL=http://localhost:5000
-```
-
-Never upload `.env` files, API secrets, database credentials, or JWT secrets to GitHub.
+*Note: Check the current package.json scripts and actual folder structure before following these commands. Additional configuration may be required.*
 
 ---
 
-## 📡 API Overview
+## 🔮 Future Scope
 
-The following endpoints have been implemented or started:
+CineSphere aims to evolve into a complete movie discovery and social engagement platform.
 
-| Method | Endpoint | Purpose |
-|---|---|---|
-| POST | `/api/auth/signup` | Register a user |
-| POST | `/api/auth/login` | Authenticate a user |
-| GET | `/api/watchlist` | Retrieve user watchlist |
-| POST | `/api/watchlist/:movieId` | Add movie to watchlist |
+Planned improvements include:
 
-Additional endpoints for movie discovery, community interactions, comments, reviews, and profile management are planned.
-
----
-
-## 🔮 Future Vision
-
-Our long-term vision is to transform CineSphere into a complete cinema community platform.
-
-Potential future additions include:
-
-- Personalized movie recommendations.
-- Advanced movie search and discovery.
-- User ratings and detailed reviews.
-- Social feeds and community discussions.
-- Following other movie enthusiasts.
-- Personalized movie collections.
-- Improved recommendation algorithms.
+- 🔥 Advanced Hype Meter with improved community engagement tracking.
+- 🎯 Personalized movie recommendation system.
+- 📈 Advanced audience sentiment analytics.
+- 👤 Complete user profiles and activity tracking.
+- 🌐 Production deployment and custom domain.
+- 📱 Improved mobile experience.
+- 🎬 More advanced movie discovery and filtering.
+- 💬 Enhanced community interaction features.
 
 ---
 
 ## 👨‍💻 Contributors
 
-Developed as a collaborative full-stack development project.
+CineSphere is being developed collaboratively.
 
-**GitHub Repository:**  
-https://github.com/SrijalSrivastava19/Cinesphere
+### Srijal Srivastava
+**Project Developer & Backend Contributor**
 
-**Developer:**  
-Srijal Srivastava
+- Backend development using Node.js and Express.js.
+- MongoDB integration and database modeling.
+- Authentication and JWT implementation.
+- TMDB API integration.
+- Watchlist and community backend functionality.
+- AI sentiment analysis integration.
+
+GitHub: [SrijalSrivastava19](https://github.com/SrijalSrivastava19)
+
+### Prachi Mishra
+**Frontend Contributor**
+
+- Frontend development and UI implementation.
+- Contribution to the CineSphere frontend experience.
+
+GitHub: [2006prachimishra-ship-it](https://github.com/2006prachimishra-ship-it)
 
 ---
 
-## 🎬 Our Vision
+## 🎯 Our Vision
 
 **CineSphere — Where Cinema Meets Community.**
 
-A place where every movie has a story, every viewer has an opinion, and every cinema enthusiast has a community.
+We believe cinema is more than just watching movies. It's about discovering stories, sharing opinions, understanding audience perspectives, and connecting with people who love films.
+
+CineSphere aims to bring all of these experiences together in one platform.
+
+⭐ If you find this project interesting, consider starring the repository!
